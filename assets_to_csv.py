@@ -231,10 +231,12 @@ def generate_asset_list(my_dict,asset_info):
 #
 # global vars
 #
+input_dir="../"
+output_dir="../results/"
 asset_info={}
-output_file="results.csv"
-output_file2="results.json"
-keys_file="../sc_keys.json"
+output_file=output_dir+"results.csv"
+output_file2=output_dir+"results.json"
+keys_file=input_dir+"sc_keys.json"
 vuln_result_limit=10000 # limits the inital set of informational vulnerabilities pulled
 pull_vuln_summaries=1
 num_assets=0

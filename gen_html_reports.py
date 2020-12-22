@@ -5,7 +5,12 @@ import time
 import csv
 from datetime import datetime, timedelta
 
-f=open("asset_report.html","w+")
+input_dir="../"
+results_dir="../results/"
+output_dir="../reports/"
+
+
+f=open(output_dir+"asset_report.html","w+")
 
 html_header='<html>\n'\
 		'<head>\n'\
@@ -30,7 +35,7 @@ f.write('</script>\n')
 '''
 
 # get asset list
-f2=open("results.json","r")
+f2=open(results_dir+"results.json","r")
 asset_list=json.load(f2)
 f2.close()
 asset_list.sort(key=lambda x: (x.get('repo_name'),int(x.get('crit'))+int(x.get('high')),x.get('ip')), reverse=True)
@@ -44,6 +49,10 @@ f.write('</div>')
 f.write('<table width=100%></table>')
 
 
+
+#
+# repo summary
+#
 f.write('<div class=bar_chart_fl>\n')
 repo_summary={}
 count=1
@@ -78,7 +87,9 @@ f.write('</div>')
 
 f.write('<table width=100%></table>')
 
-
+#
+# Search bar
+#
 f.write('<div class=bar_chart_fl>\n')
 f.write('<p>\n')
 f.write('<input type="text" id="search_field" onkeyup="myFunction()" placeholder="Search.." title="Type in a name">')
@@ -87,7 +98,9 @@ f.write('</div>')
 
 f.write('<table width=100%></table>')
 
-
+#
+# Asset Info
+#
 f.write('<div class=bar_chart_fl>\n')
 f.write('<table class=table1 id=search_table>')
 f.write('<tr>')
